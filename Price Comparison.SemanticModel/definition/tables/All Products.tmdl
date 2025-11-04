@@ -1,0 +1,56 @@
+table 'All Products'
+	lineageTag: 20eaccb3-82a4-4b00-9844-0c0125b9c537
+
+	column title
+		dataType: string
+		lineageTag: 2642e57c-6846-4ac5-87e9-0fec714ab015
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: string
+		lineageTag: 55c18187-a775-4ffe-bce3-0cecda37fc49
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 6ba3de5a-d0e3-4620-ab08-a2f25c423d49
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column imageUrl
+		dataType: string
+		lineageTag: 9fcc1a58-5f99-4642-801e-f101cafd38fe
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: imageUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		lineageTag: 10c0e1fb-c392-49c0-a982-f96173c760f9
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'All Products' = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({#"E1060i E1060s E790i E660i", #"A790i A660i A540i A430i A830i"})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

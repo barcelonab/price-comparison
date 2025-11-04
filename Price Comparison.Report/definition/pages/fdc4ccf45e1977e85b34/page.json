@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "fdc4ccf45e1977e85b34",
+  "displayName": "Page 1",
+  "displayOption": "FitToPage",
+  "height": 900,
+  "width": 1400,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0020ea8a88a04b6c26fd",
+        "displayName": "Vendor",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Products"
+              }
+            },
+            "Property": "source"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "d10d434ecec7cc7fc63b",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Products"
+              }
+            },
+            "Property": "Model"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "212L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

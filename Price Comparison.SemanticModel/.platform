@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Price Comparison"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "da56492c-0b26-4bf2-a01b-fa0514214e4c"
+  }
+}

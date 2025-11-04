@@ -1,0 +1,73 @@
+table 'A790i A660i A540i A430i A830i'
+	lineageTag: 552d1189-2e7c-4b4e-b9e6-46678b0f6eac
+
+	column Model
+		dataType: string
+		lineageTag: b1837e4d-5095-4011-a509-0cd3a942707d
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 0830a487-5c11-4f5c-a3b8-56571791c597
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: string
+		lineageTag: 3e26b44f-8f75-4f9a-a3ee-d88c4b3a4187
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: b7825d2a-a81c-4f76-b3ac-e5537762101c
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column imageUrl
+		dataType: string
+		lineageTag: 2c602fc1-787e-4829-a1b8-0a7026ccafda
+		summarizeBy: none
+		sourceColumn: imageUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'A790i A660i A540i A430i A830i' = m
+		mode: import
+		source = ```
+				let
+				    Models = {"A790i", "A660i", "A540i", "A430i", "A830i"},
+				    GetData = (model as text) =>
+				        Json.Document(
+				            Web.Contents(
+				                "https://zylalabs.com/api/2332/prices+comparison+api/14550/get+comparison?query=" & model & "&page=1&country=us",
+				                [Headers=[Authorization="Bearer 10972|2WcPHKmatQaR3oDmx6GJAQEbGFmLt0ASDfvkBk6s"]]
+				            )
+				        )[products],
+				    Combined = List.Combine(List.Transform(Models, each GetData(_))),
+				    TableResult = Table.FromList(Combined, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    Expanded = Table.ExpandRecordColumn(TableResult, "Column1", {"title", "price", "source", "imageUrl"}),
+				    #"Filtered Rows" = Table.SelectRows(Expanded, each Text.Contains([title], "A790i") or Text.Contains([title], "A660i") or Text.Contains([title], "A540i") or Text.Contains([title], "A430i") or Text.Contains([title], "A830i")),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "Model", each if Text.Contains([title], "A790i",Comparer.OrdinalIgnoreCase) then "A790i" 
+				            else if Text.Contains([title], "A660i", Comparer.OrdinalIgnoreCase) then "A660i" 
+				            else if Text.Contains([title], "A540i", Comparer.OrdinalIgnoreCase) then "A540i" 
+				            else if Text.Contains([title], "A430i", Comparer.OrdinalIgnoreCase) then "A430i" 
+				            else if Text.Contains([title], "A830i", Comparer.OrdinalIgnoreCase) then "A830i"               
+				            else "Other")
+				in
+				    #"Added Custom"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
