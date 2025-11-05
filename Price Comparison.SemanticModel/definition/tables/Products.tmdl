@@ -1,0 +1,81 @@
+table Products
+	lineageTag: 83e27b77-7613-4586-bda1-301c02c6b464
+
+	column model
+		dataType: string
+		lineageTag: 626fe923-e15a-447d-9c5d-1efa86bd3e4d
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: b71d913e-47c1-4507-9d8b-95c906a25693
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 00deb200-f361-4441-bfc5-17993a92f667
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2b41d28d-064a-45f1-8fce-3f2e5e275e76
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column imageUrl
+		dataType: string
+		lineageTag: 55e1a765-4587-43c8-972a-cee3e8fd872d
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: imageUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column link
+		dataType: string
+		lineageTag: 8e593517-be10-434d-99f9-e8aa0df294b3
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: link
+
+		annotation SummarizationSetBy = Automatic
+
+	column datetime_fetched
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 335d8969-76a7-42e6-b9ac-df17bd5ae330
+		summarizeBy: none
+		sourceColumn: datetime_fetched
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Reports\Power BI\Price Comparison\zyla_all_products.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"model", type text}, {"title", type text}, {"source", type text}, {"price", Currency.Type}, {"imageUrl", type text}, {"link", type text}, {"datetime_fetched", type datetime}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.Contains([title], "A790i") or Text.Contains([title], "A660i")),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"title", "source"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,14 +1,15 @@
 import requests
 import pandas as pd
 import time
+from datetime import datetime
 
 # 🔐 Zyla Labs API configuration
-api_key = "10972|2WcPHKmatQaR3oDmx6GJAQEbGFmLt0ASDfvkBk6s"
-base_url = "https://zylalabs.com/api/2332/prices+comparison+api/14550/get+comparison"
+api_key = "11044|6I98ta7GgDvnB6ESRpGfUZWoxkpDl9cWP5t21vMd"
+base_url = "https://zylalabs.com/api/7604/price+compare+api/14551/get+comparison"
 country = "us"
 
 # 🛍️ List of products to search
-products = ["A430i", "A660i", "A790i", "E1060i", "E1060s", "E660i", "E790i"]
+products = ["A790i-8EAN","A790i-8LAN","A660i-8EAN","A660i-8LAN"]
 
 # Store all products in a single list
 all_results = []
@@ -17,7 +18,7 @@ for product in products:
     print(f"\n🔍 Fetching results for: {product}")
     page = 1
 
-    while True:
+    while page <= 1:
         print(f"  📄 Page {page}...")
         response = requests.get(
             base_url,
@@ -39,6 +40,7 @@ for product in products:
         # Add search term and page number for traceability
         for item in products_data:
             item["model"] = product
+            
 
         all_results.extend(products_data)
         page += 1
@@ -50,8 +52,11 @@ for product in products:
 df = pd.DataFrame(all_results)
 
 # Keep only specific columns (rename if necessary)
-columns_to_keep = ["model", "title", "source", "price", "imageUrl","link"]
+columns_to_keep = ["model", "title", "source", "price", "imageUrl", "link"]
 df = df[[col for col in columns_to_keep if col in df.columns]]
+
+# 🕒 Add current date and time
+df["datetime_fetched"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Save to CSV
 if not df.empty:

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
-  "name": "d1d07685ee6bd54a04ab",
+  "name": "41fd995ec6dbfa196ee9",
   "position": {
-    "x": 488.30348258696017,
-    "y": 29.228855721213822,
-    "z": 3000,
-    "height": 69.402985074626869,
-    "width": 527.23880597014931,
-    "tabOrder": 1000
+    "x": 6.8407960199004973,
+    "y": 12.313432835820894,
+    "z": 5001,
+    "height": 24.626865671641788,
+    "width": 518.53233830845772,
+    "tabOrder": 5001
   },
   "visual": {
     "visualType": "textbox",
@@ -41,22 +41,13 @@
             },
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Price Comparison List'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "35D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Lucida Sans Unicode'''"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_measures"
+                    }
+                  },
+                  "Property": "Latest Update"
                 }
               }
             },
@@ -69,6 +60,20 @@
                       "Percent": 0.2
                     }
                   }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Courier New'''"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
                 }
               }
             }

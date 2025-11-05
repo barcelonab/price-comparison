@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
   "name": "45d89766badda308a710",
   "position": {
-    "x": 14.55223880597015,
-    "y": 102.98507462686567,
+    "x": 6.8407960199004973,
+    "y": 113.55721393034825,
     "z": 0,
-    "height": 788.05970149253733,
-    "width": 1370.1492537313434
+    "height": 972.76119402985069,
+    "width": 1587.0646766169152,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "tableEx",
@@ -19,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "All Products"
+                      "Entity": "Products"
                     }
                   },
                   "Property": "imageUrl"
                 }
               },
-              "queryRef": "All Products.imageUrl",
+              "queryRef": "Products.imageUrl",
               "nativeQueryRef": "Image",
               "displayName": "Image"
             },
@@ -34,13 +35,28 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "All Products"
+                      "Entity": "Products"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "Products.model",
+              "nativeQueryRef": "Model #",
+              "displayName": "Model #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Products"
                     }
                   },
                   "Property": "source"
                 }
               },
-              "queryRef": "All Products.source",
+              "queryRef": "Products.source",
               "nativeQueryRef": "Vendor",
               "displayName": "Vendor"
             },
@@ -49,27 +65,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "All Products"
-                    }
-                  },
-                  "Property": "Model"
-                }
-              },
-              "queryRef": "All Products.Model",
-              "nativeQueryRef": "Model1"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "All Products"
+                      "Entity": "Products"
                     }
                   },
                   "Property": "title"
                 }
               },
-              "queryRef": "All Products.title",
+              "queryRef": "Products.title",
               "nativeQueryRef": "Description",
               "displayName": "Description"
             },
@@ -78,18 +80,50 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "All Products"
+                      "Entity": "Products"
                     }
                   },
                   "Property": "price"
                 }
               },
-              "queryRef": "All Products.price",
+              "queryRef": "Sum(Products.price)",
               "nativeQueryRef": "Price",
               "displayName": "Price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Products"
+                    }
+                  },
+                  "Property": "link"
+                }
+              },
+              "queryRef": "Products.link",
+              "nativeQueryRef": "Link",
+              "displayName": "Link"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Products"
+                  }
+                },
+                "Property": "link"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
@@ -106,7 +140,7 @@
             "urlIcon": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -134,6 +168,36 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Highligh Price"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(Products.price)"
           }
         }
       ],
@@ -221,6 +285,13 @@
                   "Value": "15D"
                 }
               }
+            },
+            "imageHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "150D"
+                }
+              }
             }
           }
         }
@@ -231,13 +302,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "697.0365179430468D"
+                  "Value": "553.3788240124932D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.title"
+            "metadata": "Products.title"
           }
         },
         {
@@ -245,13 +316,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "237.66223801553664D"
+                  "Value": "276.60116496999433D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.source"
+            "metadata": "Products.source"
           }
         },
         {
@@ -259,13 +330,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "116.4415172321423D"
+                  "Value": "117.88385455795026D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.imageUrl"
+            "metadata": "Products.link"
           }
         },
         {
@@ -273,13 +344,13 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "113.65671201446459D"
+                  "Value": "184.25542302870753D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.Model"
+            "metadata": "Products.model"
           }
         },
         {
@@ -287,13 +358,40 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "165.42398339290003D"
+                  "Value": "199.50045890776678D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.price"
+            "metadata": "Products.imageUrl"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "219.23049921742304D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Products.price)"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ],
@@ -310,13 +408,55 @@
             "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "'Right'"
+                  "Value": "'Center'"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "All Products.price"
+            "metadata": "Products.imageUrl"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Products.price)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Products.model"
           }
         },
         {
@@ -337,28 +477,7 @@
             }
           },
           "selector": {
-            "metadata": "All Products.imageUrl"
-          }
-        },
-        {
-          "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            },
-            "styleHeader": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "All Products.Model"
+            "metadata": "Products.link"
           }
         }
       ]
@@ -368,79 +487,88 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3ec71b60f32d571bbb3f",
+        "name": "e16061b7f8114663c303",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "All Products"
+                "Entity": "Products"
               }
             },
             "Property": "imageUrl"
           }
         },
-        "type": "Categorical",
-        "isHiddenInViewMode": true
+        "type": "Categorical"
       },
       {
-        "name": "32848b8a1e0c1ee07c0b",
+        "name": "c17b76743db1ba4e55f6",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "All Products"
+                "Entity": "Products"
               }
             },
-            "Property": "price"
+            "Property": "model"
           }
         },
-        "type": "Categorical",
-        "isHiddenInViewMode": true
+        "type": "Categorical"
       },
       {
-        "name": "2ba748476867a43ad637",
+        "name": "746fa27a3a57aa934e9b",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "All Products"
-              }
-            },
-            "Property": "title"
-          }
-        },
-        "type": "Categorical",
-        "isHiddenInViewMode": true
-      },
-      {
-        "name": "102b6fc296112a4e51e5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "All Products"
-              }
-            },
-            "Property": "Model"
-          }
-        },
-        "type": "Categorical",
-        "isHiddenInViewMode": true
-      },
-      {
-        "name": "84a6e22067045070c7c2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "All Products"
+                "Entity": "Products"
               }
             },
             "Property": "source"
           }
         },
-        "type": "Categorical",
-        "isHiddenInViewMode": true
+        "type": "Categorical"
+      },
+      {
+        "name": "2991d2efa4e069586786",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "title"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "cff1ea67c73c4a2d7e93",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "price"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "83890a1f7b0f48439ea2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "link"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

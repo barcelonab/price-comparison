@@ -1,0 +1,31 @@
+table _measures
+	lineageTag: 538f2022-5b54-476d-b5dc-828c96d1fd8b
+
+	measure 'Highligh Price' =
+			
+			SWITCH(TRUE(),
+			    Parameter[Parameter Value] = 0 || ISBLANK(Parameter[Parameter Value]), "#ffffff00",
+			    MAX(Products[price]) > Parameter[Parameter Value], "#F44336",
+			    "#ffffff00"
+			    )
+		lineageTag: 6fc65f98-cb5f-478f-ba7c-5541533dd968
+
+	measure 'Latest Update' = "Updated : " & MAX(Products[datetime_fetched])
+		lineageTag: d88e6a6d-d42c-44f2-8bfd-8a2967584ead
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: 2e4cf6c7-a310-4d54-b32b-dde857fa820e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _measures = calculated
+		mode: import
+		source = {BLANK()}
+
+	annotation PBI_Id = 81ab83eb32084ef488f7f0b896b44bf4
+

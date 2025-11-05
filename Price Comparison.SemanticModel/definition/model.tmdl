@@ -8,13 +8,13 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["E1060i E1060s E790i E660i","A790i A660i A540i A430i A830i","All Products"]
+annotation PBI_QueryOrder = ["Products"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table 'E1060i E1060s E790i E660i'
-ref table 'A790i A660i A540i A430i A830i'
-ref table 'All Products'
+ref table Products
+ref table Parameter
+ref table _measures
 
 ref cultureInfo en-US
 

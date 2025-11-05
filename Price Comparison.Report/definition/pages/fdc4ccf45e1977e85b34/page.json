@@ -3,38 +3,52 @@
   "name": "fdc4ccf45e1977e85b34",
   "displayName": "Page 1",
   "displayOption": "FitToPage",
-  "height": 900,
-  "width": 1400,
+  "height": 1100,
+  "width": 1600,
   "filterConfig": {
     "filters": [
       {
-        "name": "0020ea8a88a04b6c26fd",
-        "displayName": "Vendor",
+        "name": "43fe046b247338dd5d8a",
         "ordinal": 0,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "All Products"
+                "Entity": "Products"
               }
             },
             "Property": "source"
           }
         },
         "type": "Categorical",
-        "howCreated": "User"
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       },
       {
-        "name": "d10d434ecec7cc7fc63b",
+        "name": "6ca78ce843afdb9f8847",
         "ordinal": 1,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "All Products"
+                "Entity": "Products"
               }
             },
-            "Property": "Model"
+            "Property": "model"
           }
         },
         "type": "Categorical",
