@@ -78,7 +78,7 @@ table Products
 				    Source = Csv.Document(File.Contents("D:\Reports\Power BI\Price Comparison\zyla_all_products.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"model", type text}, {"title", type text}, {"source", type text}, {"price", Currency.Type}, {"imageUrl", type text}, {"link", type text}, {"datetime_fetched", type datetime}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.Contains([title], "E790i")),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.Contains([title], "E790") or Text.Contains([title], "Fire Magic")),
 				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"link"}),
 				    #"Custom Model #" = Table.AddColumn(#"Removed Duplicates", "model_#", each if Text.Contains([title], "9EAN-W", Comparer.OrdinalIgnoreCase) then [model] & "-9EAN-W"
 				else 
@@ -88,6 +88,14 @@ table Products
 				else 
 				if Text.Contains([title], "9E1P-W", Comparer.OrdinalIgnoreCase) then [model] & "-9E1P-W"
 				else 
+				if Text.Contains([title], "9L1N-W", Comparer.OrdinalIgnoreCase) then [model] & "-9L1N-W"
+				else 
+				if Text.Contains([title], "9L1P-W", Comparer.OrdinalIgnoreCase) then [model] & "-9L1P-W"
+				else 
+				if Text.Contains([title], "9LAN-W", Comparer.OrdinalIgnoreCase) then [model] & "-9LAN-W"
+				else 
+				if Text.Contains([title], "9LAP-W", Comparer.OrdinalIgnoreCase) then [model] & "-9LAP-W"
+				else 
 				if Text.Contains([title], "9EAN", Comparer.OrdinalIgnoreCase) then [model] & "-9EAN"
 				else
 				if Text.Contains([title], "9EAP", Comparer.OrdinalIgnoreCase) then [model] & "-9EAP"
@@ -96,6 +104,14 @@ table Products
 				else
 				if Text.Contains([title], "9E1P", Comparer.OrdinalIgnoreCase) then [model] & "-9E1P"
 				else
+				if Text.Contains([title], "9L1N", Comparer.OrdinalIgnoreCase) then [model] & "-9L1N"
+				else 
+				if Text.Contains([title], "9L1P", Comparer.OrdinalIgnoreCase) then [model] & "-9L1P"
+				else
+				if Text.Contains([title], "9L1N", Comparer.OrdinalIgnoreCase) then [model] & "-9L1N"
+				else 
+				if Text.Contains([title], "9L1P", Comparer.OrdinalIgnoreCase) then [model] & "-9L1P"
+				else 
 				[model])
 				in
 				    #"Custom Model #"
