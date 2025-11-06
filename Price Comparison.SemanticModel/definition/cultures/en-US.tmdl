@@ -173,16 +173,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.452
 			          }
-			        },
-			        {
-			          "Model #": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -1422,9 +1412,153 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "product.model_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Products",
+			          "ConceptualProperty": "model_#"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "model_#": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "model_ no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "model_ num": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "model_ number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "Model #": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.latest_update": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_measures",
+			          "ConceptualProperty": "Latest Update"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "latest update": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "update": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "parameter_has_entity__measure_highligh_price": {
+			      "Binding": {
+			        "ConceptualEntity": "Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "parameter": {
+			          "Target": {
+			            "Entity": "parameter"
+			          }
+			        },
+			        "entity__measure.highligh_price": {
+			          "Target": {
+			            "Entity": "entity__measure.highligh_price"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "parameter"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.highligh_price"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "parameters_have_highligh_price"
+			        }
+			      ]
+			    },
+			    "parameter_has_parameter_value": {
+			      "Binding": {
+			        "ConceptualEntity": "Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "parameter": {
+			          "Target": {
+			            "Entity": "parameter"
+			          }
+			        },
+			        "parameter.parameter_value": {
+			          "Target": {
+			            "Entity": "parameter.parameter_value"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "parameter"
+			            },
+			            "Object": {
+			              "Role": "parameter.parameter_value"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "parameters_have_parameter_value"
+			        }
+			      ]
+			    },
 			    "parameter_has_parameter": {
 			      "Binding": {
 			        "ConceptualEntity": "Parameter"
@@ -1758,72 +1892,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "parameter_has_parameter_value": {
-			      "Binding": {
-			        "ConceptualEntity": "Parameter"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "parameter": {
-			          "Target": {
-			            "Entity": "parameter"
-			          }
-			        },
-			        "parameter.parameter_value": {
-			          "Target": {
-			            "Entity": "parameter.parameter_value"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "parameter"
-			            },
-			            "Object": {
-			              "Role": "parameter.parameter_value"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "parameters_have_parameter_value"
-			        }
-			      ]
-			    },
-			    "parameter_has_entity__measure_highligh_price": {
-			      "Binding": {
-			        "ConceptualEntity": "Parameter"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "parameter": {
-			          "Target": {
-			            "Entity": "parameter"
-			          }
-			        },
-			        "entity__measure.highligh_price": {
-			          "Target": {
-			            "Entity": "entity__measure.highligh_price"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "parameter"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.highligh_price"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "parameters_have_highligh_price"
-			        }
-			      ]
-			    },
 			    "product_has_entity__measure_highligh_price": {
 			      "Binding": {
 			        "ConceptualEntity": "Products"
@@ -1854,6 +1922,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "products_have_highligh_price"
+			        }
+			      ]
+			    },
+			    "product_has_model_": {
+			      "Binding": {
+			        "ConceptualEntity": "Products"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "product": {
+			          "Target": {
+			            "Entity": "product"
+			          }
+			        },
+			        "product.model_": {
+			          "Target": {
+			            "Entity": "product.model_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "product"
+			            },
+			            "Object": {
+			              "Role": "product.model_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "products_have_model_"
+			        }
+			      ]
+			    },
+			    "product_has_entity__measure_latest_update": {
+			      "Binding": {
+			        "ConceptualEntity": "Products"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "product": {
+			          "Target": {
+			            "Entity": "product"
+			          }
+			        },
+			        "entity__measure.latest_update": {
+			          "Target": {
+			            "Entity": "entity__measure.latest_update"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "product"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.latest_update"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "products_have_latest_update"
 			        }
 			      ]
 			    }

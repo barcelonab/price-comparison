@@ -9,6 +9,7 @@
     "filters": [
       {
         "name": "43fe046b247338dd5d8a",
+        "displayName": "Vendor",
         "ordinal": 0,
         "field": {
           "Column": {
@@ -25,21 +26,14 @@
         "objects": {
           "general": [
             {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
+              "properties": {}
             }
           ]
         }
       },
       {
-        "name": "6ca78ce843afdb9f8847",
+        "name": "8e08442395ba0fc500b5",
+        "displayName": "Model #",
         "ordinal": 1,
         "field": {
           "Column": {
@@ -48,7 +42,31 @@
                 "Entity": "Products"
               }
             },
-            "Property": "model"
+            "Property": "model_#"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "de5fa794675ca70eaed0",
+        "displayName": "Description",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "title"
           }
         },
         "type": "Categorical",
@@ -64,7 +82,7 @@
           "width": {
             "expr": {
               "Literal": {
-                "Value": "212L"
+                "Value": "305L"
               }
             }
           }

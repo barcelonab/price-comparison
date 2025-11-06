@@ -3,10 +3,10 @@
   "name": "45d89766badda308a710",
   "position": {
     "x": 6.8407960199004973,
-    "y": 113.55721393034825,
+    "y": 127.23880597014924,
     "z": 0,
-    "height": 972.76119402985069,
-    "width": 1587.0646766169152,
+    "height": 938.55721393034821,
+    "width": 1574.7512437810944,
     "tabOrder": 5000
   },
   "visual": {
@@ -38,10 +38,10 @@
                       "Entity": "Products"
                     }
                   },
-                  "Property": "model"
+                  "Property": "model_#"
                 }
               },
-              "queryRef": "Products.model",
+              "queryRef": "Products.model_#",
               "nativeQueryRef": "Model #",
               "displayName": "Model #"
             },
@@ -207,7 +207,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "16D"
                 }
               }
             },
@@ -289,7 +289,7 @@
             "imageHeight": {
               "expr": {
                 "Literal": {
-                  "Value": "150D"
+                  "Value": "100D"
                 }
               }
             }
@@ -302,7 +302,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "553.3788240124932D"
+                  "Value": "582.0906943991135D"
                 }
               }
             }
@@ -316,7 +316,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "276.60116496999433D"
+                  "Value": "251.9381320650681D"
                 }
               }
             }
@@ -344,20 +344,6 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "184.25542302870753D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Products.model"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
                   "Value": "199.50045890776678D"
                 }
               }
@@ -372,13 +358,27 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "219.23049921742304D"
+                  "Value": "202.8289743003884D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Sum(Products.price)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.9054692844733D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Products.model_#"
           }
         }
       ],
@@ -440,23 +440,23 @@
         },
         {
           "properties": {
-            "styleHeader": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "alignment": {
               "expr": {
                 "Literal": {
                   "Value": "'Center'"
                 }
               }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           },
           "selector": {
-            "metadata": "Products.model"
+            "metadata": "Products.link"
           }
         },
         {
@@ -477,7 +477,7 @@
             }
           },
           "selector": {
-            "metadata": "Products.link"
+            "metadata": "Products.model_#"
           }
         }
       ]
@@ -498,7 +498,8 @@
             "Property": "imageUrl"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "isHiddenInViewMode": true
       },
       {
         "name": "c17b76743db1ba4e55f6",
@@ -512,7 +513,9 @@
             "Property": "model"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "howCreated": "User",
+        "isHiddenInViewMode": true
       },
       {
         "name": "746fa27a3a57aa934e9b",
@@ -526,7 +529,8 @@
             "Property": "source"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "isHiddenInViewMode": true
       },
       {
         "name": "2991d2efa4e069586786",
@@ -540,7 +544,8 @@
             "Property": "title"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "isHiddenInViewMode": true
       },
       {
         "name": "cff1ea67c73c4a2d7e93",
@@ -554,7 +559,8 @@
             "Property": "price"
           }
         },
-        "type": "Advanced"
+        "type": "Advanced",
+        "isHiddenInViewMode": true
       },
       {
         "name": "83890a1f7b0f48439ea2",
@@ -568,7 +574,23 @@
             "Property": "link"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "f2030fc0535570343f04",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "model_#"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
       }
     ]
   }

@@ -9,7 +9,7 @@ base_url = "https://zylalabs.com/api/7604/price+compare+api/14551/get+comparison
 country = "us"
 
 # 🛍️ List of products to search
-products = ["A790i-8EAN","A790i-8LAN","A660i-8EAN","A660i-8LAN"]
+products = ["E790i"]
 
 # Store all products in a single list
 all_results = []
@@ -18,7 +18,7 @@ for product in products:
     print(f"\n🔍 Fetching results for: {product}")
     page = 1
 
-    while page <= 1:
+    while page <= 5:
         print(f"  📄 Page {page}...")
         response = requests.get(
             base_url,

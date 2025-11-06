@@ -20,7 +20,7 @@ table Parameter
 
 	partition Parameter = calculated
 		mode: import
-		source = GENERATESERIES(0, MAX(Products[price]), 1)
+		source = GENERATESERIES(0, 50000, 1)
 
 	annotation PBI_Id = dee78717caf84d599c67f52ecbdec732
 

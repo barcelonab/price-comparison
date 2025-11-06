@@ -27,7 +27,7 @@ table Products
 
 	column price
 		dataType: decimal
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 2b41d28d-064a-45f1-8fce-3f2e5e275e76
 		summarizeBy: sum
 		sourceColumn: price
@@ -63,17 +63,43 @@ table Products
 
 		annotation SummarizationSetBy = Automatic
 
+	column model_#
+		dataType: string
+		lineageTag: 54344743-4767-4df3-be4b-ddcef2466f88
+		summarizeBy: none
+		sourceColumn: model_#
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Products = m
 		mode: import
-		source =
+		source = ```
 				let
 				    Source = Csv.Document(File.Contents("D:\Reports\Power BI\Price Comparison\zyla_all_products.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"model", type text}, {"title", type text}, {"source", type text}, {"price", Currency.Type}, {"imageUrl", type text}, {"link", type text}, {"datetime_fetched", type datetime}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.Contains([title], "A790i") or Text.Contains([title], "A660i")),
-				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"title", "source"})
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.Contains([title], "E790i")),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"link"}),
+				    #"Custom Model #" = Table.AddColumn(#"Removed Duplicates", "model_#", each if Text.Contains([title], "9EAN-W", Comparer.OrdinalIgnoreCase) then [model] & "-9EAN-W"
+				else 
+				if Text.Contains([title], "9EAP-W", Comparer.OrdinalIgnoreCase) then [model] & "-9EAP-W"
+				else 
+				if Text.Contains([title], "9E1N-W", Comparer.OrdinalIgnoreCase) then [model] & "-9E1N-W"
+				else 
+				if Text.Contains([title], "9E1P-W", Comparer.OrdinalIgnoreCase) then [model] & "-9E1P-W"
+				else 
+				if Text.Contains([title], "9EAN", Comparer.OrdinalIgnoreCase) then [model] & "-9EAN"
+				else
+				if Text.Contains([title], "9EAP", Comparer.OrdinalIgnoreCase) then [model] & "-9EAP"
+				else
+				if Text.Contains([title], "9E1N", Comparer.OrdinalIgnoreCase) then [model] & "-9E1N"
+				else
+				if Text.Contains([title], "9E1P", Comparer.OrdinalIgnoreCase) then [model] & "-9E1P"
+				else
+				[model])
 				in
-				    #"Removed Duplicates"
+				    #"Custom Model #"
+				```
 
 	annotation PBI_NavigationStepName = Navigation
 
