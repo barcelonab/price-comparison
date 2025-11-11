@@ -17,7 +17,7 @@ all_results = []
 for product in products:
     print(f"\n🔍 Fetching results for: {product}")
     page = 1
-
+    
     while page <= 5:
         print(f"  📄 Page {page}...")
         response = requests.get(
