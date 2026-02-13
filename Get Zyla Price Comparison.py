@@ -41,7 +41,7 @@ for product in products:
         for item in products_data:
             item["model"] = product
             
-
+                                                                                                                                                                                                    
         all_results.extend(products_data)
         page += 1
 
@@ -61,7 +61,7 @@ df["datetime_fetched"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Save to CSV
 if not df.empty:
     file_name = r"D:\Reports\Power BI\Price Comparison\zyla_all_products.csv"
-    df.to_csv(file_name, index=False)
+    df.to_csv(file_name, index=False)                                                                                                           
     print(f"\n✅ Saved {len(df)} total items to '{file_name}'")
 else:
     print("\n⚠️ No data returned from the API.")
